@@ -1,0 +1,7 @@
+streamlit
+openai
+python-dotenv
+pdfplumber
+langchain
+sentence-transformers
+faiss-cpu
