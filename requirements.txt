@@ -1,7 +1,8 @@
 streamlit
 openai
-python-dotenv
-pdfplumber
-langchain
-sentence-transformers
+langchain>=0.1.14
+langchain-community>=0.0.21
 faiss-cpu
+sentence-transformers
+requests
+python-dotenv
