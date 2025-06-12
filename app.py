@@ -50,7 +50,7 @@ retriever = load_vectorstore()
 
 # --- Step 3: Load QA Chain ---
 api_key = os.getenv("OPENAI_API_KEY")
-llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7, openai_api_key=api_key)
+llm = ChatOpenAI(model_name="gpt-4.1-nano", temperature=0.7, openai_api_key=api_key)
 qa_chain = load_qa_chain(llm, chain_type="stuff")
 
 # --- Question Answering Logic ---
