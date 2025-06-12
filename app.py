@@ -3,6 +3,7 @@ import streamlit as st
 import pickle
 from openai import OpenAI
 import os
+import requests
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -22,6 +23,16 @@ st.caption("🤖 HR made simple. Ask me anything from the Employee Handbook!")
 # --- Load Vectorstore ---
 @st.cache_resource
 def load_vectorstore():
+    url = "https://drive.google.com/uc?export=download&id=1LRcof-2qDV0V5FeRPPJx6Zdruw23BOOq"
+    local_path = "file.pkl"
+
+    if not os.path.exists(local_path):
+        with st.spinner("📦 Downloading vectorstore..."):
+            response = requests.get(url)
+            with open(local_path, "wb") as f:
+                f.write(response.content)
+
+
     with open("file.pkl", "rb") as f:
         vectorstore = pickle.load(f)
     return vectorstore.as_retriever(search_kwargs={"k": 20})  # Reduced k for relevance
